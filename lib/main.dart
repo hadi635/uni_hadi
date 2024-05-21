@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_slider_drawer/flutter_slider_drawer.dart';
-import 'package:overlapping_panels/overlapping_panels.dart';
-import 'package:overlapping_panels_demo/screens/left_page.dart';
+import 'package:overlapping_panels_demo/screens/login_screen.dart';
 import 'package:overlapping_panels_demo/screens/main_page.dart';
-import 'package:overlapping_panels_demo/widgets/footer_widget.dart';
+
+import 'screens/signup_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -18,6 +18,21 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       theme: ThemeData.dark(
         useMaterial3: true,
+      ).copyWith(
+        inputDecorationTheme: const InputDecorationTheme(
+          focusedBorder: OutlineInputBorder(
+            borderSide: BorderSide(color: Colors.blue),
+          ),
+          enabledBorder: OutlineInputBorder(
+            borderSide: BorderSide(color: Colors.blue),
+          ),
+          errorBorder: OutlineInputBorder(
+            borderSide: BorderSide(color: Colors.blue),
+          ),
+          border: OutlineInputBorder(
+            borderSide: BorderSide(color: Colors.blue),
+          ),
+        ),
       ),
       debugShowCheckedModeBanner: false,
       home: const MyHomePage(title: 'Flutter Demo Home Page'),
@@ -36,49 +51,35 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   Offset footerOffset = const Offset(0, 1);
-  GlobalKey<SliderDrawerState> _key = GlobalKey<SliderDrawerState>();
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Stack(
-        children: [
-          SliderDrawer(
-            sliderBoxShadow:
-                SliderBoxShadow(color: Colors.blue, blurRadius: 36),
-            key: _key,
-            sliderOpenSize: 329,
-            appBar: SliderAppBar(
-                drawerIcon: IconButton(
-                  onPressed: () {
-                    setState(() {
-                      if (_key.currentState!.isDrawerOpen == false) {
-                        _key.currentState!.openSlider();
-                        footerOffset = const Offset(0, 0);
-                      } else if (_key.currentState!.isDrawerOpen == true) {
-                        _key.currentState!.closeSlider();
-                        footerOffset = const Offset(0, 1);
-                      }
-                    });
-                  },
-                  icon: Icon(Icons.menu),
-                ),
-                appBarColor: Colors.blue,
-                title: Text('Title',
-                    style: const TextStyle(
-                        fontSize: 22, fontWeight: FontWeight.w700))),
-            slider: Builder(builder: (context) {
-              return const LeftPage();
-            }),
-            child: Builder(
-              builder: (context) {
-                return const MainPage();
-              },
-            ),
+    return MaterialApp(
+      title: 'LAH',
+      theme: ThemeData.dark().copyWith(
+        inputDecorationTheme: const InputDecorationTheme(
+          focusedBorder: OutlineInputBorder(
+            borderSide: BorderSide(color: Colors.blue),
           ),
-          FooterWidget(footerOffset: footerOffset)
-        ],
+          enabledBorder: OutlineInputBorder(
+            borderSide: BorderSide(color: Colors.blue),
+          ),
+          errorBorder: OutlineInputBorder(
+            borderSide: BorderSide(color: Colors.blue),
+          ),
+          border: OutlineInputBorder(
+            borderSide: BorderSide(color: Colors.blue),
+          ),
+        ),
       ),
+      home: const LoginScreen(),
+      routes: {
+        '/signup': (context) => const SignupScreen(),
+        '/login': (context) => const LoginScreen(),
+        '/home': (context) => const MainPage(
+              title: 'Home Page',
+            ),
+      },
     );
   }
 }

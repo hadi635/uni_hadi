@@ -1,4 +1,15 @@
 const { MongoClient } = require('mongodb');
+const express = require('express');
+const router = express.Router();
+const chatController = require('../controllers/chat.controller'); // Ensure the path is correct
+
+// Define the route for fetching messages
+router.get('/messages', chatController.getMessages);
+
+// Define the route for posting a message
+router.post('/messages', chatController.postMessage);
+
+module.exports = router;
 
 const uri = "mongodb+srv://app138709:ppf3sZgoeoryHqtY@cluster0.lfqeuvd.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
 let db;

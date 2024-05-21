@@ -34,9 +34,13 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
   flutter_slider_drawer:
+  shared_preferences:
   web_socket_channel:
   http:
+  image_picker:
   overlapping_panels:
+  intl: ^0.17.0
+  socket_io_client: ^2.0.0
 
 dev_dependencies:
   flutter_test:
