@@ -36,7 +36,7 @@ class AuthService {
         'email': email,
         'password': password,
       }),
-    );
+    );   
     if (response.statusCode == 200) {
       final Map<String, dynamic> responseData = jsonDecode(response.body);
       final String userId = responseData['userId'];
