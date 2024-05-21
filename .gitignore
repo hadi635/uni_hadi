@@ -1,0 +1,23 @@
+# Flutter/Dart related files
+.dart_tool/
+.packages
+.flutter-plugins
+.flutter-plugins-dependencies
+.flutter-versions
+.metadata
+build/
+ios/Flutter/.last_build_id
+.idea/
+*.iml
+
+# Node.js related files
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# IDE specific files
+.vscode/
+.history/
+.idea/
+*.iml
